@@ -123,3 +123,16 @@ nav ul li a:hover, a.active{
     justify-content: space-between;
 }
 
+.modal-content{
+    height: 300px;
+    text-align: center;
+}
+
+.modal-content img{
+    width: 80px;
+    margin: 40px auto 10px auto;
+
+}
+.congratulation{
+    color: green;
+}

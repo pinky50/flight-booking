@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
     <!-- Stylesheet -->
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -97,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style" onclick="bookBtn()">Book Now</button>
+            <button class="btn-style " data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -106,12 +107,25 @@
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
-
-
-
-        <!--Thank You-->
     </main>
-    
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-content">
+                    <img src="images/smiley-face.png" alt="" class="img-center">
+                    <h4 class="congratulation">Congratulations! </h4>
+                    <h5>Your payment is Successful.</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script>
 
         function ticketCountHandler(ticket, isIncrease) {
@@ -166,14 +180,17 @@
             return ticketCount;
         }
 
-        //booknow function
-        function bookBtn() {
-            alert("Congratulations! Your Payment is Successful.")
-        }
+        // modal
+        var myModal = document.getElementById('myModal')
+        var myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', function () {
+            myInput.focus()
+        })
 
     </script>
 
-
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
