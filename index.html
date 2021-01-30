@@ -27,7 +27,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main class="main-content container content-wrapper">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
@@ -65,7 +65,7 @@
                     <input id="economy-count" class="inp-style inp-width" type="text" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="ticketCountHandler('economy',true)">+</button>
+                    <span onclick="ticketCountHandler('economy',true)">+</span>
                     <span onclick="ticketCountHandler('economy',false)">-</span>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button class="btn-style" onclick="bookBtn()">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -106,61 +106,74 @@
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
-        </section>
 
-        <script>
 
-            function ticketCountHandler(ticket, isIncrease) {
-                
-                var ticketInput = document.getElementById(ticket + "-count");
-                var ticketCount = parseInt(ticketInput.value);
-                var ticketNewCount = ticketCount;
-
-                if (isIncrease == true) {
-                    ticketNewCount = ticketCount + 1;
-                }
-                if (isIncrease == false && ticketCount > 0) {
-                    ticketNewCount = ticketCount - 1;
-                }
-               
-                ticketInput.value = ticketNewCount;
-                
-                var ticketTotal = 0;
-                if (ticket == 'firstclass') {
-                    ticketTotal = ticketNewCount * 150;
-                }
-                if (ticket == 'economy') {
-                    ticketTotal = ticketNewCount * 100;
-                }
-                calculateTotal();
-
-            }
-
-            function calculateTotal() {
-
-                var firstClassTicketCount = ticketInputCount("firstclass");
-                var economyCount = ticketInputCount("economy");
-
-                var SubTotalPrice = firstClassTicketCount * 150 + economyCount * 100;
-                document.getElementById("subtotal-price").innerText = "$" + SubTotalPrice;
-
-                var tax = SubTotalPrice * 0.1;
-                document.getElementById("tax").innerText = "$" + tax;
-
-                var grandTotal = SubTotalPrice + tax
-                document.getElementById("grand-total").innerText = "$" + grandTotal;
-
-            }
-
-            function ticketInputCount(ticket){
-                var ticketInput = document.getElementById(ticket + "-count");
-                var ticketCount = parseInt(ticketInput.value);
-                return ticketCount;
-            }
-
-        </script>
 
         <!--Thank You-->
+    </main>
+    
+    <script>
+
+        function ticketCountHandler(ticket, isIncrease) {
+
+            var ticketInput = document.getElementById(ticket + "-count");
+            var ticketCount = parseInt(ticketInput.value);
+            var ticketNewCount = ticketCount;
+
+            if (isIncrease == true) { //if value is increase
+                ticketNewCount = ticketCount + 1;
+            }
+            if (isIncrease == false && ticketCount > 0) { // //if value is decrease
+                ticketNewCount = ticketCount - 1;
+            }
+
+            ticketInput.value = ticketNewCount;
+
+            var ticketTotal = 0;
+            if (ticket == 'firstclass') {//total price of first class ticket
+                ticketTotal = ticketNewCount * 150;
+            }
+            if (ticket == 'economy') {//total price of economy ticket
+                ticketTotal = ticketNewCount * 100;
+            }
+            calculateTotal(); //call calculateTotal function
+
+        }
+
+        function calculateTotal() {
+
+            var firstClassTicketCount = ticketInputCount("firstclass");
+            var economyCount = ticketInputCount("economy");
+
+            //subtotal price
+            var SubTotalPrice = firstClassTicketCount * 150 + economyCount * 100;
+            document.getElementById("subtotal-price").innerText = "$" + SubTotalPrice;
+
+            //tax price
+            var tax = SubTotalPrice * 0.1;
+            document.getElementById("tax").innerText = "$" + tax;
+
+            //grandtotal price
+            var grandTotal = SubTotalPrice + tax
+            document.getElementById("grand-total").innerText = "$" + grandTotal;
+            return grandTotal;
+
+        }
+
+        function ticketInputCount(ticket) {
+            var ticketInput = document.getElementById(ticket + "-count");
+            var ticketCount = parseInt(ticketInput.value);
+            return ticketCount;
+        }
+
+        //booknow function
+        function bookBtn() {
+            alert("Congratulations! Your Payment is Successful.")
+        }
+
+    </script>
+
+
 </body>
 
 </html>
