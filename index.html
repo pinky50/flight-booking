@@ -27,7 +27,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container content-wrapper">
+    <main class="main-content container">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
@@ -120,10 +120,10 @@
             var ticketCount = parseInt(ticketInput.value);
             var ticketNewCount = ticketCount;
 
-            if (isIncrease == true) { //if value is increase
+            if (isIncrease == true) { //if value is increased
                 ticketNewCount = ticketCount + 1;
             }
-            if (isIncrease == false && ticketCount > 0) { // //if value is decrease
+            if (isIncrease == false && ticketCount > 0) { //if value is decreased but not less than 0
                 ticketNewCount = ticketCount - 1;
             }
 
